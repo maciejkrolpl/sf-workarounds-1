@@ -1,0 +1,6 @@
+<aura:component implements="flexipage:availableForRecordHome">
+    <lightning:messageChannel type="LwcWorkspaceApi__c" onMessage="{!c.handleMessageReceived}" scope="APPLICATION" />
+    <lightning:workspaceAPI aura:id="workspace" />
+    <aura:attribute name="methods" type="Object[]" />
+    <aura:attribute name="latestResponse" type="String" />
+</aura:component>
