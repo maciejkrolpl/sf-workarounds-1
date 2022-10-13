@@ -1,9 +1,6 @@
 import { LightningElement, api, wire } from 'lwc';
 import getAccountsContacts from '@salesforce/apex/AccountService.getAccountsContacts';
-import {
-    MessageContext,
-    publish,
-} from 'lightning/messageService';
+import { MessageContext, publish } from 'lightning/messageService';
 import lwcWorkspaceApi from '@salesforce/messageChannel/LwcWorkspaceApi__c';
 
 export default class WorkspaceApiUser extends LightningElement {
@@ -18,44 +15,14 @@ export default class WorkspaceApiUser extends LightningElement {
             recordId: contactId,
             focus: true
         };
-        this.sendMessage([{ operation, parameters }]);
+        this.sendMessage({ operation, parameters });
     }
 
     handleSubtabOpen(event) {
         const contactId = event.target.dataset.id;
-        const methods = [
-            {
-                operation: 'getEnclosingTabId',
-                parameters: {}
-            },
-            {
-                operation: 'openSubtab',
-                parameters: {
-                    recordId: contactId,
-                    parentTabId: '<RESPONSE>',
-                    focus: true
-                }
-            },
-            {
-                operation: 'setTabLabel',
-                parameters: {
-                    tabId: '<RESPONSE>',
-                    label: 'Nowy Subtab'
-                }
-            }, {
-                operation: 'setTabIcon',
-                parameters: {
-                    tabId: '<RESPONSE>.tabId',
-                    icon: 'action:approval'
-                }
-            }
-        ];
-        this.sendMessage(methods);
     }
 
-    sendMessage(methods) {
-        publish(this.messageContext, lwcWorkspaceApi, methods);
+    sendMessage(method) {
+        publish(this.messageContext, lwcWorkspaceApi, { method } );
     }
-
-
 }

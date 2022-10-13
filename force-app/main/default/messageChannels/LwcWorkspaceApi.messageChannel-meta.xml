@@ -4,11 +4,7 @@
     <isExposed>true</isExposed>
     <description>Send data from LWC to Workspace API</description>
     <lightningMessageFields>
-        <fieldName>operation</fieldName>
+        <fieldName>method</fieldName>
         <description>Method to be run</description>
-    </lightningMessageFields>
-    <lightningMessageFields>
-        <fieldName>parameters</fieldName>
-        <description>Method's parameters</description>
     </lightningMessageFields>
 </LightningMessageChannel> 

@@ -1,7 +1,7 @@
-({
+({  // controller
     handleMessageReceived: function (component, message, helper) {
-        const methods = message.getParams();
-        component.set('v.methods', methods);
-        helper.runNextWorkspaceApiMethod(component, 0);
+        const method = message.getParam('method');
+        component.set('v.method', method);
+        helper.runMethod(component);
     }
 })
