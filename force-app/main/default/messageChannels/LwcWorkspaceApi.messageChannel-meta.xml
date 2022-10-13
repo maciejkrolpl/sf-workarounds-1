@@ -1,14 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <LightningMessageChannel xmlns="http://soap.sforce.com/2006/04/metadata">
-    <masterLabel>ConnectAuraAndLWC</masterLabel>
-    <isExposed>true</isExposed>
     <description>Send data from LWC to Workspace API</description>
+    <isExposed>true</isExposed>
     <lightningMessageFields>
-        <fieldName>operation</fieldName>
         <description>Method to be run</description>
+        <fieldName>methods</fieldName>
     </lightningMessageFields>
-    <lightningMessageFields>
-        <fieldName>parameters</fieldName>
-        <description>Method's parameters</description>
-    </lightningMessageFields>
-</LightningMessageChannel> 
+    <masterLabel>ConnectAuraAndLWC</masterLabel>
+</LightningMessageChannel>

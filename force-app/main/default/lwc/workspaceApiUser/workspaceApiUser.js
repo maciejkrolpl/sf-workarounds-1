@@ -35,26 +35,13 @@ export default class WorkspaceApiUser extends LightningElement {
                     parentTabId: '<RESPONSE>',
                     focus: true
                 }
-            },
-            {
-                operation: 'setTabLabel',
-                parameters: {
-                    tabId: '<RESPONSE>',
-                    label: 'Nowy Subtab'
-                }
-            }, {
-                operation: 'setTabIcon',
-                parameters: {
-                    tabId: '<RESPONSE>.tabId',
-                    icon: 'action:approval'
-                }
             }
         ];
         this.sendMessage(methods);
     }
 
     sendMessage(methods) {
-        publish(this.messageContext, lwcWorkspaceApi, methods);
+        publish(this.messageContext, lwcWorkspaceApi, { methods });
     }
 
 

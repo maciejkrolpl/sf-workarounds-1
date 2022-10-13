@@ -1,4 +1,4 @@
-({
+({  // helper
     runNextWorkspaceApiMethod: function (component, index) {
         const that = this;
         const methods = component.get('v.methods');
@@ -16,12 +16,7 @@
     parseParameters: function (component, parameters) {
         const latestResponse = component.get('v.latestResponse');
         const entries = Object.entries(parameters).map(([key, value]) => {
-            if (/<RESPONSE>/g.test(value)) {
-                const dotPosition = value.indexOf('.');
-                if (dotPosition >= 0) {
-                    const responseField = value.substring(dotPosition + 1);
-                    return [key, latestResponse[responseField]];
-                }
+            if (value === '<RESPONSE>') {
                 return [key, latestResponse];
             }
             return [key, value]
@@ -31,7 +26,7 @@
 
     runMethod: function (component, operation, parameters) {
         const workspaceAPI = component.find('workspace');
-        return new Promise((resolve, reject) => {
+        const promise = new Promise((resolve, reject) => {
             workspaceAPI[operation](parameters)
                 .then(response => {
                     component.set('v.latestResponse', response);
@@ -39,5 +34,6 @@
                 })
                 .catch(error => reject(error))
         });
+        return promise;
     }
 })
