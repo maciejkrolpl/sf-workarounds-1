@@ -54,7 +54,7 @@ export default class WorkspaceApiUser extends LightningElement {
     }
 
     sendMessage(methods) {
-        publish(this.messageContext, lwcWorkspaceApi, methods);
+        publish(this.messageContext, lwcWorkspaceApi, { methods });
     }
 
 
